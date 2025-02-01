@@ -92,20 +92,23 @@ export default function NavMenu() {
               </span>
             </div>
             {categoryData &&
-              categoryData.category.map((category, index) => (
-                <div className={styles.menu} key={index}>
-                  <span
-                    onClick={() => {
-                      if (pathname === `/collections/${category}`) {
-                        return setNavOn(false);
-                      }
-                      router.push(`/collections/${category}?page=1`);
-                    }}
-                  >
-                    {category}
-                  </span>
-                </div>
-              ))}
+              categoryData.category.map((category, index) => {
+                if (category === "x") return;
+                return (
+                  <div className={styles.menu} key={index}>
+                    <span
+                      onClick={() => {
+                        if (pathname === `/collections/${category}`) {
+                          return setNavOn(false);
+                        }
+                        router.push(`/collections/${category}?page=1`);
+                      }}
+                    >
+                      {category}
+                    </span>
+                  </div>
+                );
+              })}
             <div className={styles.search}>
               <span
                 onClick={() => {
